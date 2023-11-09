@@ -1,0 +1,8 @@
+{{khawlah}}
+
+<h3>Blog</h3>
+<ul>
+  {% for post in khawlah %}
+  <li>{{post}}-{{post.author}}-{{post.category}}-{{post.publish_date}}</li>
+  {% endfor %}
+</ul>
