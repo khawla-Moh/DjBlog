@@ -20,3 +20,19 @@ def post_details(request,post_id):
         'post_de':data
     }
     return render(request,'posts/post_details.html',context)
+
+
+
+
+""" 
+def post_list(request):
+
+    data=Post.objects.all( )  #query
+    context={'khawlah':data}  #context
+    return render(request,'posts/post_list.html',context) #templeate
+ """
+
+
+from django.views.generic import ListView
+class PostList(ListView):             #context_list object_list
+    model=Post
