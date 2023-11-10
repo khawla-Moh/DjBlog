@@ -4,7 +4,7 @@
 <ul>
   {% for post in khawlah %}
   <li>
-    <a href="/posts/{{post.id}}">{{post}}</a>
+    <a href="/posts/{{post.id}}">{{post}}-{{post.content|safe}}</a>
   </li>
   <li>{{post}}-{{post.author}}-{{post.category}}-{{post.publish_date}}</li>
 
