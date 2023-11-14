@@ -59,6 +59,11 @@ def edit_post(request,pk):
 
 
 
+def delete_post(request,pk):
+    post=Post.objects.get(id=pk)
+    post.delete()
+    return redirect('/posts/')
+
 """ 
 def post_list(request):
 
