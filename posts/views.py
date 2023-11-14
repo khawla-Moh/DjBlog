@@ -80,3 +80,8 @@ class EditPost(UpdateView):
     fields='__all__'                  #instaed of forms file  
     success_url='/posts/'             #instead of redirect
     template_name='posts/edit.html'
+
+
+class DeletePost(DeleteView):
+    model=Post
+    success_url='/posts/'    
