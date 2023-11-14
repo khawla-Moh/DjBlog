@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Post
-
+from .forms import PostForm
 # Create your views here.
 
 
@@ -22,6 +22,19 @@ def post_details(request,post_id):
     return render(request,'posts/post_details.html',context)
 
 
+def create_post(request):
+    if request.method=='POST':
+        form=PostForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+    else:
+        form=PostForm
+
+    
+
+
+    return render(request,'posts/new.html',{'form':form})
+
 
 
 """ 
@@ -34,5 +47,9 @@ def post_list(request):
 
 
 from django.views.generic import ListView
-class PostList(ListView):             #context_list object_list
-    model=Post
+class PostList(ListView):             #context:model_list ,object_list
+    model=Post                        #template:mode;_action=post_list    
+class PostDetails(ListView):          #context :post ,object
+    model=Post                        # tempalte:post_details 
+
+

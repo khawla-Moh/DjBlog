@@ -18,16 +18,21 @@ from django.contrib import admin
 from django.urls import path ,include
 from django.conf import settings
 from django.conf.urls.static import static
-from posts.views import post_list,post_details
+from posts.views import post_list,post_details,PostList,PostDetails,create_post
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('posts/',post_list),
-    path('posts/<int:post_id>',post_details)
+    #path('posts/',post_list),
+    path('posts/',PostList.as_view()),
+    path('posts/new',create_post),
+
+    #path('posts/<int:post_id>',post_details)
+    path('posts/<int:pk>',PostDetails.as_view()),
+    path('summernote/', include('django_summernote.urls')),
 ]
 urlpatterns +=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += [
-    path('summernote/', include('django_summernote.urls')),
+
  ]
