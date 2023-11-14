@@ -39,6 +39,25 @@ def create_post(request):
     return render(request,'posts/new.html',{'form':form})
 
 
+def edit_post(request,pk):
+    post=Post.objects.get(id=pk)
+    
+    if request.method=='POST':
+        form=PostForm(request.POST,request.FILES,instance=post)
+        if form.is_valid():
+            myfrom= form.save(commit=False)
+            myfrom.author=request.user
+            myfrom.save()
+            return redirect('/posts/')
+    else:
+        form=PostForm(instance=post)
+
+    
+
+
+    return render(request,'posts/edit.html',{'form':form})
+
+
 
 """ 
 def post_list(request):
