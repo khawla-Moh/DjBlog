@@ -1,4 +1,3 @@
-from datetime import timezone
 from django.db import models
 from django.utils import timezone
 
@@ -45,7 +44,7 @@ class Comments(models.Model):
     post=models.ForeignKey(Post,related_name='comment_post',on_delete=models.CASCADE)
     user=models.CharField(max_length=50)
     Comments=models.TextField(max_length=500)
-    created_at=models.DateTimeField()    
+    created_at=models.DateTimeField(default=timezone.now)    
 
     def __str__(self):
         return str(self.post)

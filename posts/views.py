@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Post,Comments
-from .forms import PostForm
+from .forms import PostForm,CommentsForm
 
 # Create your views here.
 
@@ -16,10 +16,19 @@ def post_list(request):
 def post_details(request,post_id):
     data=Post.objects.get(id=post_id)
     comments=Comments.objects.filter(post=data)          #to display comments in post #post >>coulmn in comment
+    if request.method=='POST':
+        form=CommentsForm(request.POST)
+        if form.is_valid():
+            myform=form.save(commit=False)
+            myform.post=data
+            myform.save()
+    else:
+        form=CommentsForm()
 
     context={
         'post_de':data,
-        'comments':comments                             #dispaly comments in html    
+        'comments':comments ,                            #dispaly comments in html    
+         'form':form
     }
     return render(request,'posts/post_details.html',context)
 
