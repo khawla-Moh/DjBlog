@@ -37,11 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'posts',
+    
    
     'django_extensions',
     'taggit',
+    "django_bootstrap5",
     'django_summernote',
+    'rest_framework',
+    'posts',
+
 ]
 
 MIDDLEWARE = [

@@ -1,3 +1,4 @@
+{% load django_bootstrap5 %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,8 +36,9 @@
     <h3>Add  a new comment</h3>
     <form  method="post">
         {% csrf_token%}         
-        {{form}}
-       <input type="submit" value="add comment">
+       {% bootstrap_form form %}
+
+       {% bootstrap_button button_type="submit" content="add comment" %}
     </form>
     </div>
     
