@@ -18,21 +18,21 @@ from django.contrib import admin
 from django.urls import path ,include
 from django.conf import settings
 from django.conf.urls.static import static
-from posts.views import post_list,post_details,PostList,PostDetails,create_post,AddPost,edit_post,EditPost,delete_post,DeletePost
-
+from posts.views import post_list,post_details,create_post,edit_post,delete_post
+#from posts.views2 import PostList,PostDetails,AddPost,EditPost,DeletePost
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('posts/',post_list),
-    path('posts/',PostList.as_view()),
-    # path('posts/new',create_post),
-    path('posts/new',AddPost.as_view()),
-    #path('posts/<int:post_id>',post_details)
-    path('posts/<int:pk>',PostDetails.as_view()),
-    #path('posts/<int:pk>/edit',edit_post),
-    path('posts/<int:pk>/edit',EditPost.as_view()),
-    #path('posts/<int:pk>/delete',delete_post),DeletePost
-    path('posts/<int:pk>/delete',DeletePost.as_view()),
+    path('posts/',post_list),
+    #path('posts/',PostList.as_view()),
+    path('posts/new',create_post),
+    #path('posts/new',AddPost.as_view()),
+    path('posts/<int:post_id>',post_details),
+    #path('posts/<int:pk>',PostDetails.as_view()),
+    path('posts/<int:pk>/edit',edit_post),
+    #path('posts/<int:pk>/edit',EditPost.as_view()),
+    path('posts/<int:pk>/delete',delete_post),
+    #path('posts/<int:pk>/delete',DeletePost.as_view()),
 
     path('summernote/', include('django_summernote.urls')),
 ]
