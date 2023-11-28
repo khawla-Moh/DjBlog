@@ -8,3 +8,10 @@ def post_list_api(request):
     posts=Post.objects.all()
     data=PostSerilaizers(posts,many=True).data
     return Response({'data':data})
+
+
+@api_view(['Get'])
+def post_detailes_api(request,id):
+    post=Post.objects.get(id=id)
+    data=PostSerilaizers(post).data
+    return Response({'data':data})
